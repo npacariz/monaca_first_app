@@ -4,9 +4,15 @@
              <v-ons-back-button>Wikipedia Search</v-ons-back-button>
             <div class="center">{{title}}</div>
         </v-ons-toolbar>
-        <p style="text-align: center" v-html="wikiText">
-         {{article}}
-        </p>
+          <div style="margin: 20px auto; width: 320px;" v-if="!wikiText">
+            <p>Loading stuff...</p>
+             <ons-progress-circular indeterminate></ons-progress-circular>
+          </div>
+        <div class="center">
+          <p style="text-align: center; width: 320px" v-html="wikiText">
+          {{article}}
+          </p>
+        </div>
     </v-ons-page>
 </template>
 <script>
@@ -28,9 +34,12 @@ export default {
   computed: {
     article() {
       wikiService.getSingleArticle(this.title).then(response => {
-        return (this.wikiText = response.data.parse.text["*"]);
+        this.wikiText = response.data.parse.text["*"];
+        return;
       });
     }
   }
 };
 </script>
+<style>
+</style>
