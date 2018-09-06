@@ -29,7 +29,7 @@ import Content from "./Content";
 export default {
   data() {
     return {
-      title: "Serach Wikipedia",
+      title: "Search Wikipedia",
       query: "",
       listOfArticles: []
     };

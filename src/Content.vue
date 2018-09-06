@@ -4,14 +4,17 @@
              <v-ons-back-button>Wikipedia Search</v-ons-back-button>
             <div class="center">{{title}}</div>
         </v-ons-toolbar>
-          <div style="margin: 20px auto; width: 320px;" v-if="!wikiText">
-            <p>Loading stuff...</p>
-             <ons-progress-circular indeterminate></ons-progress-circular>
+          <div class="center">
+            <div style="margin: 0 auto;text-align: center; width: 320px;" v-if="!wikiText">
+              <p>Loading stuff...</p>
+                <ons-icon size="30px" spin icon="md-spinner"></ons-icon>
+            </div>
+
+          <div class="content">
+            <p style="text-align: center; width: 320px" v-html="wikiText">
+            {{article}}
+            </p>
           </div>
-        <div class="center">
-          <p style="text-align: center; width: 320px" v-html="wikiText">
-          {{article}}
-          </p>
         </div>
     </v-ons-page>
 </template>
